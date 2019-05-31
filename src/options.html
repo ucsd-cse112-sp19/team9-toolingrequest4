@@ -17,7 +17,15 @@
       <p>Choose a different background color!</p>
     </div>
     <form id="settings">
-      <label name="repo">Repository: <input id="repo"></label>
+        <h3>Github Repository Information:</h3>
+        <label name="repo">Repository: <input id="repo"></label><br/>
+        <label name="owner">Owner: <input id="owner"></label><br/>
+        <h3>Github Authentication</h3>
+        <label name="username">Username: <input disabled id="user"></label>
+        <br/>
+        <label name="password">Password: <input disabled id="pass" type="password"></label>
+        <br/>
+        <input type="submit">
     </form>
   </body>
   <script src="options.js"></script>
