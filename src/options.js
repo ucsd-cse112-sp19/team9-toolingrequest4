@@ -13,3 +13,22 @@ function constructOptions(kButtonColors) {
   }
 }
 constructOptions(kButtonColors);
+
+chrome.storage.sync.get('repo', function (data) {
+  let repo = data['repo'];
+  let repo_input = document.getElementById('repo');
+  if( repo ) {
+    repo_input.value = ''+repo;
+  } else {
+    repo_input.placeholder = 'repository url';
+  }
+
+  function updateRepositoryInfo(e) {
+    e.preventDefault();
+    if( repo_input.value ) {
+      chrome.storage.sync.set({'repo': repo_input.value});
+    }
+  }
+
+  document.getElementById("settings").onsubmit = updateRepositoryInfo;
+});
