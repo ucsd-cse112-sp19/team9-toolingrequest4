@@ -1,18 +1,11 @@
-// let changeColor = document.getElementById('changeColor');
-
-// chrome.storage.sync.get('color', function(data) {
-//   changeColor.style.backgroundColor = data.color;
-//   changeColor.setAttribute('value', data.color);
-// });
-
-// changeColor.onclick = function(element) {
-//     let color = element.target.value;
-//     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-//       chrome.tabs.executeScript(
-//           tabs[0].id,
-//           {code: 'document.body.style.backgroundColor = "' + color + '";'});
-//     });
-//   };
+document.getElementById('settings').onclick = function(e) {
+  console.log('got here');
+  if (chrome.runtime.openOptionsPage) {
+    chrome.runtime.openOptionsPage();
+  } else {
+    window.open(chrome.runtime.getURL('options.html'));
+  }
+};
 
 function makeRow(text) {
   let elem = document.createElement('div');
@@ -69,8 +62,8 @@ chrome.storage.sync.get([repo_key, owner_key], function(data) {
     return;
   }
 
-  document.getElementById('repo_name').value = repo;
-  document.getElementById('repo_owner').value = owner;
+  // document.getElementById('repo_name').value = repo;
+  // document.getElementById('repo_owner').value = owner;
 
   getContributions(repo, owner);
 })

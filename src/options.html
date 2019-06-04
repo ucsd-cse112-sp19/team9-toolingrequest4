@@ -1,32 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-      button {
-        height: 30px;
-        width: 30px;
-        outline: none;
-        margin: 10px;
-      }
-    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    <div id="buttonDiv">
+    <div class="container-fluid">
+      <h2>Sources</h2>
+      <div class="btn-group">
+        <toggler-btn class="btn btn-success" target="github-collapse" value="show">
+          Github
+        </toggler-btn>
+      </div>
+      <div class="card collapse" id="github-collapse">
+          <form id="github-settings">
+              <h3>Github Repository Information:</h3>
+              <label name="repo">Repository: <input id="repo"></label><br/>
+              <label name="owner">Owner: <input id="owner"></label><br/>
+              <h3>Github Authentication</h3>
+              <label name="username">Username: <input disabled id="user"></label>
+              <br/>
+              <label name="password">Password: <input disabled id="pass" type="password"></label>
+              <br/>
+              <input type="submit">
+          </form>
+      </div>
+      <h2>Groups</h2>
+      <div class="btn-group">
+        <toggler-btn class="btn btn-secondary" target="new-group-collapse" value="show">
+          *Create New*
+        </toggler-btn>
+      </div>
+      <div class="card collapse" id="new-group-collapse">
+          <form id="new-group-form">
+              Metrics:<br/>
+              <fill-metrics pre="metrics"></fill-metrics>
+              Members:</br>
+              <input type="submit" value="Create">
+          </form>
+      </div>
     </div>
-    <div>
-      <p>Choose a different background color!</p>
-    </div>
-    <form id="settings">
-        <h3>Github Repository Information:</h3>
-        <label name="repo">Repository: <input id="repo"></label><br/>
-        <label name="owner">Owner: <input id="owner"></label><br/>
-        <h3>Github Authentication</h3>
-        <label name="username">Username: <input disabled id="user"></label>
-        <br/>
-        <label name="password">Password: <input disabled id="pass" type="password"></label>
-        <br/>
-        <input type="submit">
-    </form>
   </body>
+  <script src="loader.js"></script>
+  <script src="components/InfoCard.js"></script>
+  <script src="components/Util.js"></script>
   <script src="options.js"></script>
 </html>
