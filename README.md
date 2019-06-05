@@ -6,6 +6,7 @@ repository activity.
 
 ### Install Locally
 
+1. Clone this repository to your computer.
 1. Navigate to <chrome://extensions>.
 1. Enable _Developer Mode_ (top right corner).
 1. Click _Load Unpacked_ (top left corner).
