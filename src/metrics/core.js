@@ -31,12 +31,15 @@ customElements.define('fill-metrics', class extends HTMLElement {
     }
 
     connectedCallback() {
+        this.container = document.createElement('div');
+        this.container.classList.add("card");
+        this.appendChild(this.container);
         watchMetrics(this.updateMetrics.bind(this));
     }
 
     updateMetrics(name, obj) {
         console.log('got metrics from: ' + name);
-        for( let metric in obj ){
+        for( let metric in obj.available ){
             console.log("> " + metric);
             this.addMetric(name, metric)
         }   
@@ -53,12 +56,11 @@ customElements.define('fill-metrics', class extends HTMLElement {
         let checkbox = document.importNode(template.content, true).lastChild;
         let input = checkbox.children[0];
         let label = checkbox.children[1];
-        // console.log(input);
-        // console.log(label);
+
         input.id = "" + name + "-" + metric;
         label.setAttribute("for", "" + name + "-" + metric);
         label.innerText = metric;
 
-        this.appendChild(checkbox);
+        this.container.appendChild(checkbox);
     }
 });

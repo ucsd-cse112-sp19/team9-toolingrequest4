@@ -7,17 +7,27 @@ document.getElementById('settings').onclick = function(e) {
   }
 };
 
-function makeRow(text) {
-  let elem = document.createElement('div');
-  elem.innerText = text;
-  return elem;
+function makeRow(key, value) {
+  let row = document.createElement('tr');
+  let _key = document.createElement('td');
+  let highlight = document.createElement('mark');
+  highlight.innerText = key;
+  _key.appendChild(highlight);
+  let _value = document.createElement('td');
+  _value.innerText = value;
+  row.appendChild(_key);
+  row.appendChild(_value);
+  return row;
 }
 
-function appendRow(parent, text) {
-  parent.appendChild(makeRow(text));
+function appendRow(parent, key, value) {
+  parent.appendChild(makeRow(key, value));
 }
 
 function addContribs(contribs, data) {
+
+  let table = document.createElement('table');
+  contribs.appendChild(table);
 
   data.forEach((user)=>{
     let panel = document.createElement('div');
@@ -26,14 +36,15 @@ function addContribs(contribs, data) {
     panel.style.borderStyle = "solid";
     panel.style.borderRadius = "2px";
     panel.style.margin = "2px";
+    panel.style.whiteSpace = "nowrap";
 
-    let append = (text) => appendRow(panel, text);
-    append("Author: " + user["author"]["login"]);
+    let append = (k, v) => appendRow(panel, k, v);
+    append("Author", "" + user["author"]["login"]);
     weeks = user["weeks"];
-    append("Past Week: " + weeks[weeks.length - 1]["a"]);
-    append("Total Contributions: " + user["total"]);
+    append("Past Week", "" + weeks[weeks.length - 1]["a"]);
+    append("Total Contributions", "" + user["total"]);
 
-    contribs.appendChild(panel);
+    table.appendChild(panel);
   });
 }
 

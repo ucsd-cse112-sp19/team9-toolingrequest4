@@ -1,6 +1,9 @@
 console.log('loaded github');
 
 addMetrics("github", {  // TODO: add metric fetchers
-    total: {},
-    past_week: {},
+    available: { 
+        total: {},
+        past_week: {},
+    },
+    key: "username",
 });

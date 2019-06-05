@@ -38,10 +38,25 @@
               <input type="submit" value="Create">
           </form>
       </div>
+      <h2>Members</h2>
+      <toggler-btn class="btn btn-success" target="new-member-collapse" value="show">
+        Create New Member
+      </toggler-btn>
+      <member-select></member-select>
+      <div class="card collapse" id="new-member-collapse">
+          <form id="new-group-form">
+              <div class="form-group">
+                <label for="newMemberName">Name</label>
+                <input type="text" class="form-control" id="newMemberName" placeholder="Enter name">
+              </div>
+              <input type="submit" value="Create">
+          </form>
+      </div>
     </div>
   </body>
   <script src="loader.js"></script>
   <script src="components/InfoCard.js"></script>
   <script src="components/Util.js"></script>
+  <script src="components/MemberSelect.js"></script>
   <script src="options.js"></script>
 </html>
